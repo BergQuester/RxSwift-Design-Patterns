@@ -1,0 +1,11 @@
+{
+    "int": -3,
+    "string": "Hello, Outlaw!",
+    "transform": "12345",
+    "object": {
+        "int": -3,
+        "string": "Hello, Outlaw!"
+    },
+    "minValue": -9223372036854775808,
+    "maxValue": 9223372036854775807
+}

@@ -1,0 +1,8 @@
+{
+    "bool": true,
+    "transform": true,
+    "string": "Hello, Outlaw!",
+    "object": {
+        "string": "Hello, Outlaw!"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "uint16": 16,
+    "string": "Hello, Outlaw!",
+    "transform": "12345",
+    "object": {
+        "uint16": 16,
+        "string": "Hello, Outlaw!"
+    },
+    "minValue": 0,
+    "maxValue": 65535
+}

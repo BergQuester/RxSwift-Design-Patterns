@@ -1,0 +1,9 @@
+{
+  "commitish" : "1.1.0",
+  "iOS" : [
+    {
+      "name" : "Outlaw",
+      "hash" : "19425711d5d2c502885d9885d099a22f3acdda717d53fa708e231a213592317e"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+language: objective-c
+osx_image: xcode8.1
+
+env:
+  global:
+    - LANG=en_US.UTF-8
+    - LC_ALL=en_US.UTF-8
+    - PROJECT_NAME="Outlaw"
+    - PROJECT_SUFFFIX=".xcodeproj"
+    - FRAMEWORK_SCHEME="Outlaw"
+    - IOS_SDK=iphonesimulator10.1
+    - TVOS_SDK=appletvsimulator10.0
+    - OSX_SDK=macosx10.12
+  matrix:
+    - DESTINATION="OS=8.1,name=iPhone 6"                SCHEME="$FRAMEWORK_SCHEME" SDK="$IOS_SDK"
+    - DESTINATION="OS=9.0,name=iPhone 6s"               SCHEME="$FRAMEWORK_SCHEME" SDK="$IOS_SDK"
+    - DESTINATION="OS=10.1,name=iPhone 7"               SCHEME="$FRAMEWORK_SCHEME" SDK="$IOS_SDK"
+    - DESTINATION="OS=8.1,name=iPad Air"                SCHEME="$FRAMEWORK_SCHEME" SDK="$IOS_SDK"
+    - DESTINATION="OS=9.1,name=iPad Air 2"              SCHEME="$FRAMEWORK_SCHEME" SDK="$IOS_SDK"
+    - DESTINATION="OS=10.0,name=iPad Pro (9.7 inch)"    SCHEME="$FRAMEWORK_SCHEME" SDK="$IOS_SDK"
+    - DESTINATION="OS=9.0,name=Apple TV 1080p"          SCHEME="$FRAMEWORK_SCHEME" SDK="$TVOS_SDK"
+    - DESTINATION="OS=10.0,name=Apple TV 1080p"         SCHEME="$FRAMEWORK_SCHEME" SDK="$TVOS_SDK"
+    - DESTINATION="arch=x86_64"                         SCHEME="$FRAMEWORK_SCHEME" SDK="$OSX_SDK"
+
+before_install:
+  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+
+script:
+  - set -o pipefail
+  - xcodebuild -version
+  - xcodebuild -project "$PROJECT_NAME$PROJECT_SUFFFIX" -scheme "$SCHEME" -sdk "$SDK" GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty -c
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -J "$PROJECT_NAME"
+
+notifications:
+  email: false

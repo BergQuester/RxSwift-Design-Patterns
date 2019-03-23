@@ -1,0 +1,11 @@
+{
+    "int16": -16,
+    "string": "Hello, Outlaw!",
+    "transform": "12345",
+    "object": {
+        "int16": -16,
+        "string": "Hello, Outlaw!"
+    },
+    "minValue": -32768,
+    "maxValue": 32767
+}
