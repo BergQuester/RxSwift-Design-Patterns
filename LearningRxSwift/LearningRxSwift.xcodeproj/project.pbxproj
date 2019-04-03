@@ -62,6 +62,7 @@
 		A9FD40861FE710C300024291 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD40851FE710C300024291 /* Person.swift */; };
 		A9FD40881FE712FB00024291 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD40871FE712FB00024291 /* Friend.swift */; };
 		A9FD408A1FE713CF00024291 /* Posting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD40891FE713CF00024291 /* Posting.swift */; };
+		FEA8372E2255658200597DD5 /* SimpleRx.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA8372D2255658200597DD5 /* SimpleRx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -136,6 +137,7 @@
 		A9FD40851FE710C300024291 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		A9FD40871FE712FB00024291 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		A9FD40891FE713CF00024291 /* Posting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posting.swift; sourceTree = "<group>"; };
+		FEA8372D2255658200597DD5 /* SimpleRx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRx.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 		A99EA80D1FAA918E004DF683 /* LearningRxSwift */ = {
 			isa = PBXGroup;
 			children = (
+				FEA8372C2255655400597DD5 /* SimpleExamples */,
 				A9B063F81FC62E4D008450AA /* ModelLayer */,
 				A963E9491FD76BA20054973B /* DatabaseExample */,
 				A9B063EF1FC62911008450AA /* NetworkExample */,
@@ -317,6 +320,14 @@
 			path = ReactiveUI;
 			sourceTree = "<group>";
 		};
+		FEA8372C2255655400597DD5 /* SimpleExamples */ = {
+			isa = PBXGroup;
+			children = (
+				FEA8372D2255658200597DD5 /* SimpleRx.swift */,
+			);
+			path = SimpleExamples;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -418,6 +429,7 @@
 				A963E94C1FD76BF70054973B /* DatabaseExampleViewController.swift in Sources */,
 				A99EA85C1FAB90EC004DF683 /* TasksExamplePresenter.swift in Sources */,
 				A9B063F71FC62E1F008450AA /* Message.swift in Sources */,
+				FEA8372E2255658200597DD5 /* SimpleRx.swift in Sources */,
 				A99AEEA71FE19CA9000BC6C8 /* PhotoDescriptionTranslation.swift in Sources */,
 				A9B063F21FC62C51008450AA /* NetworkExampleViewController.swift in Sources */,
 				A9FD408A1FE713CF00024291 /* Posting.swift in Sources */,
@@ -503,6 +515,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -552,6 +565,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
