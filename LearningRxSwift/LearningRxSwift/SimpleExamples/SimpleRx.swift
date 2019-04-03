@@ -40,3 +40,24 @@ extension SimpleRx {
         //NOTE: Variable will never receive onError and onComplete events
     }
 }
+
+//MARK: - Subjects
+extension SimpleRx {
+    func subjects() {
+        let behavoirSubject = BehaviorSubject(value: 24)
+
+        let disposable = behavoirSubject.subscribe(onNext: { newValue in
+            print("behavoirSubject subscription: \(newValue)")
+        }, onError: { error in
+            print("error: \(error.localizedDescription)")
+        }, onCompleted: {
+            print("onCompleted")
+        }, onDisposed: {
+            print("onDisposed")
+        })
+
+        behavoirSubject.onNext(34)
+        behavoirSubject.onNext(48)
+        behavoirSubject.onNext(48) //dupes show as new event by default
+    }
+}
