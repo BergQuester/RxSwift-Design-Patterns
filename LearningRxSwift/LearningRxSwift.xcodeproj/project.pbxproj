@@ -63,6 +63,7 @@
 		A9FD40881FE712FB00024291 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD40871FE712FB00024291 /* Friend.swift */; };
 		A9FD408A1FE713CF00024291 /* Posting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD40891FE713CF00024291 /* Posting.swift */; };
 		FEA8372E2255658200597DD5 /* SimpleRx.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA8372D2255658200597DD5 /* SimpleRx.swift */; };
+		FEA837302256B70500597DD5 /* TraitsRx.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA8372F2256B70500597DD5 /* TraitsRx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -138,6 +139,7 @@
 		A9FD40871FE712FB00024291 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		A9FD40891FE713CF00024291 /* Posting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posting.swift; sourceTree = "<group>"; };
 		FEA8372D2255658200597DD5 /* SimpleRx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRx.swift; sourceTree = "<group>"; };
+		FEA8372F2256B70500597DD5 /* TraitsRx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraitsRx.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				FEA8372D2255658200597DD5 /* SimpleRx.swift */,
+				FEA8372F2256B70500597DD5 /* TraitsRx.swift */,
 			);
 			path = SimpleExamples;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 			files = (
 				A9F247441FC64E1D00874BF3 /* TranslationLayer.swift in Sources */,
 				A9B063F51FC62E00008450AA /* NetworkExamplePresenter.swift in Sources */,
+				FEA837302256B70500597DD5 /* TraitsRx.swift in Sources */,
 				A9FD40881FE712FB00024291 /* Friend.swift in Sources */,
 				A9F6CBB01FC5F5F40032C949 /* ReactiveUIViewController.swift in Sources */,
 				A9B064011FC630EE008450AA /* NetworkExampleTableViewCell.swift in Sources */,
