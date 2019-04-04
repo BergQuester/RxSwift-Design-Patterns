@@ -59,5 +59,25 @@ extension SimpleRx {
         behavoirSubject.onNext(34)
         behavoirSubject.onNext(48)
         behavoirSubject.onNext(48) //dupes show as new event by default
+
+        //1 on error
+//        let customError = CustomError.forcedError
+//        behavoirSubject.onError(customError) // Will also trigger dispose
+//        behavoirSubject.onNext(109) // Will never show
+
+        //2 on completed
+//        behavoirSubject.onCompleted() // Will also trigger dispose
+//        behavoirSubject.onNext(10983) // Will never show
+
+        //3 on dispose
+//        disposable.dispose()
+
+        //4 can bind observables to subjects
+        let numbers = Observable.from([1, 2, 3, 4, 5, 6, 7])
+        numbers.subscribe(onNext: { number in
+            print("observable Subscription: \(number)")
+        }).disposed(by: bag)
+
+        numbers.bind(to: behavoirSubject).disposed(by: bag)
     }
 }
