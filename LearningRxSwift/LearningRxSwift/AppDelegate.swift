@@ -10,9 +10,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         ModelLayer.shared.initDatabase()
 
-        SimpleRx.shared.variables()
-        SimpleRx.shared.subjects()
-
+//        SimpleRx.shared.variables()
+//        SimpleRx.shared.subjects()
+        SimpleRx.shared.basicObservables()
+        
         return true
     }
 }

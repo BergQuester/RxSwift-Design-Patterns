@@ -81,3 +81,37 @@ extension SimpleRx {
         numbers.bind(to: behavoirSubject).disposed(by: bag)
     }
 }
+
+//MARK: - Basic Observables
+extension SimpleRx {
+    func basicObservables() {
+        let observable = Observable<String>.create { observer in
+            // This closure is called for every subscriber - by default.
+            // Good place for side-effects
+            print("~~ Observable logic being triggered")
+
+            // Do work on background thread
+            DispatchQueue.global().async {
+                Thread.sleep(forTimeInterval: 1) // artificial delay
+
+                observer.onNext("some value 23")
+                observer.onCompleted()
+            }
+
+            return Disposables.create {
+                // do something
+                // clean up network, file, etc resources
+            }
+        }
+
+        observable.subscribe(onNext: { someString in
+            print("new value \(someString)")
+        }).disposed(by: bag)
+
+        let observer = observable.subscribe(onNext: { someString in
+            print("Another subscriber: \(someString)")
+        })
+
+        observer.disposed(by: bag)
+    }
+}
