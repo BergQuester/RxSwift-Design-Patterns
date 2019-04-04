@@ -12,8 +12,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        SimpleRx.shared.variables()
 //        SimpleRx.shared.subjects()
-        SimpleRx.shared.basicObservables()
-        
+//        SimpleRx.shared.basicObservables()
+//        SimpleRx.shared.creatingObservables()
+//        SimpleRx.shared.creatingUselessObservable()
+
         return true
     }
 }

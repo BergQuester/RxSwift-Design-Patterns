@@ -114,4 +114,26 @@ extension SimpleRx {
 
         observer.disposed(by: bag)
     }
+
+    func creatingObservables() {
+//        let observable = Observable.just(23)
+//        let observable = Observable.from([1, 2, 3, 4, 5, 6, 7, 8, 9])
+        let observable = Observable<Int>.interval(0.3, scheduler: MainScheduler.instance)
+
+        observable.subscribe(onNext: { number in
+            print(number)
+        }, onCompleted: {
+            print("No more elements ever")
+        }).disposed(by: bag)
+    }
+
+    func creatingUselessObservable() {
+        var counter = 0
+        let repeatable = Observable<String>.repeatElement("Over and over again")
+
+        repeatable.subscribe {
+            counter += 1
+            print("\($0) - \(counter)")
+        }.disposed(by: bag)
+    }
 }
