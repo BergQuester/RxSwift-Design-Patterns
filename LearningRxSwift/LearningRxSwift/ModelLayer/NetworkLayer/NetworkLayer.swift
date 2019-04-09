@@ -12,7 +12,7 @@ class NetworkLayer {
             print("start network call: \(person)")
             let randomTime = TimeInterval(person.age)
             Thread.sleep(forTimeInterval: randomTime)
-            print("finishe network call: \(person)")
+            print("finished network call: \(person)")
 
             // just randomly make odd people nil
 
@@ -22,7 +22,11 @@ class NetworkLayer {
                        ? person.description
                        : nil
 
-            finished(.success(result))
+//            if person.age == 0 {
+//                finished(.failure(CustomError.ageZeroError))
+//            } else {
+                finished(.success(result))
+//            }
         }
     }
 

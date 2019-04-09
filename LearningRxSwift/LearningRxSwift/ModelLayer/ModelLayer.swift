@@ -60,3 +60,10 @@ extension ModelLayer {
         finished(messages)
     }
 }
+
+//MARK: - Tasks
+extension ModelLayer {
+    func loadInfo(for people: [Person]) -> Observable<[String]> {
+        return networkLayer.loadInfo(for: people)
+    }
+}
