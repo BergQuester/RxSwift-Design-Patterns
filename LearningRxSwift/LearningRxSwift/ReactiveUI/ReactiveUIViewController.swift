@@ -37,6 +37,7 @@ class ReactiveUIViewController: UIViewController {
 extension ReactiveUIViewController {
     func rxExamples() {
         rxTitle()
+        rxControls()
     }
 
     func rxTitle() {
@@ -60,6 +61,14 @@ extension ReactiveUIViewController {
         presenter.title.asDriver(onErrorJustReturn: "Default Value")
                        .drive(titleLabel.rx.text)
                        .disposed(by: bag)
+    }
+
+    func rxControls() {
+        acceptButton.rx.tap.subscribe() { _ in
+            print("accept button tapped")
+        }.disposed(by: bag)
+
+        presenter.friendsLoaded.asDriver().drive(acceptButton.rx.isEnabled).disposed(by: bag)
     }
 }
 
