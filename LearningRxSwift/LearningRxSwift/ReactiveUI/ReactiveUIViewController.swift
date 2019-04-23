@@ -39,6 +39,8 @@ extension ReactiveUIViewController {
         rxTitle()
         rxControls()
         rxTable2()
+//        threading()
+        threading2()
     }
 
     func rxTitle() {
@@ -85,6 +87,44 @@ extension ReactiveUIViewController {
                          .bind(to: tableView.rx.items(cellIdentifier: "Default")) { (index, friend, cell: UITableViewCell) in
                             cell.textLabel?.text = friend.description
                          }.disposed(by: bag)
+    }
+
+    func threading() {
+        presenter.friends.asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribe {[weak self] _ in
+                print("current thread: \(Thread.current)")
+                print("Is on UI thread: \(self?.mainThreadPointer == Thread.current)")
+
+                self?.tableView.reloadData()
+            }.disposed(by: bag)
+    }
+
+    func threading2() {
+        let observable = getResult()
+
+        observable
+            .observeOn(MainScheduler.instance)
+//            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .userInteractive))
+            .subscribe(onNext: { [weak self] result in
+            print("Subscription: current thread: \(Thread.current)")
+            print("Subscription: Is on UI thread: \(self?.mainThreadPointer == Thread.current)")
+            print("result: \(result)")
+        }).disposed(by: bag)
+    }
+
+    func getResult() -> Observable<String> {
+        return Observable.create { [weak self] observer in
+            Thread.sleep(forTimeInterval: 3)
+
+            print("Observable: current thread: \(Thread.current)")
+            print("Observable: Is on UI thread: \(self?.mainThreadPointer == Thread.current)")
+
+            observer.onNext("some result")
+            observer.onCompleted()
+
+            return Disposables.create()
+        }
     }
 }
 
