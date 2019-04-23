@@ -21,7 +21,7 @@ class ReactiveUIViewController: UIViewController {
         mainThreadPointer = Thread.current
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Default")
-        tableView.dataSource = self
+//        tableView.dataSource = self
 
         rxExamples()
     }
@@ -38,6 +38,7 @@ extension ReactiveUIViewController {
     func rxExamples() {
         rxTitle()
         rxControls()
+        rxTable2()
     }
 
     func rxTitle() {
@@ -70,25 +71,40 @@ extension ReactiveUIViewController {
 
         presenter.friendsLoaded.asDriver().drive(acceptButton.rx.isEnabled).disposed(by: bag)
     }
+
+    func rxTable() {
+        presenter.friends.asObservable()
+                         .observeOn(MainScheduler.init())
+                         .subscribe(onNext: { [weak self] _ in
+                            self?.tableView.reloadData()
+                         }).disposed(by: bag)
+    }
+
+    func rxTable2() {
+        presenter.friends.asObservable()
+                         .bind(to: tableView.rx.items(cellIdentifier: "Default")) { (index, friend, cell: UITableViewCell) in
+                            cell.textLabel?.text = friend.description
+                         }.disposed(by: bag)
+    }
 }
 
 //MARK: - UITableViewDataSource
-extension ReactiveUIViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int { return 1 }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.friends.value.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let friend = presenter.friends.value[indexPath.row]
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Default", for: indexPath)
-            cell.textLabel?.text = friend.description
-
-        return cell
-    }
-}
+//extension ReactiveUIViewController: UITableViewDataSource {
+//    func numberOfSections(in tableView: UITableView) -> Int { return 1 }
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return presenter.friends.value.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let friend = presenter.friends.value[indexPath.row]
+//
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Default", for: indexPath)
+//            cell.textLabel?.text = friend.description
+//
+//        return cell
+//    }
+//}
 
 
 
