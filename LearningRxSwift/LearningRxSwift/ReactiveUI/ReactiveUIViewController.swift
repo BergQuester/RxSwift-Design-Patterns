@@ -36,11 +36,11 @@ extension ReactiveUIViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int { return 1 }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.friends.count
+        return presenter.friends.value.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let friend = presenter.friends[indexPath.row]
+        let friend = presenter.friends.value[indexPath.row]
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "Default", for: indexPath)
             cell.textLabel?.text = friend.description
